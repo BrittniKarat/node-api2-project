@@ -124,12 +124,12 @@ describe('server.js', () => {
     }, 750)
   })
   describe('[DELETE] /api/posts/:id', () => {
-    test('[12] reponds with a 404 if the post is not found', async () => {
+    test('[12] responds with a 404 if the post is not found', async () => {
       let res = await request(server).delete('/api/posts/111')
       expect(res.status).toBe(404)
       expect(res.body.message).toMatch(/does not exist/i)
     }, 750)
-    test('[13] reponds with the complete deleted post', async () => {
+    test('[13] responds with the complete deleted post', async () => {
       await db('posts').insert(post1)
       let res = await request(server).delete('/api/posts/1')
       expect(res.body).toHaveProperty('id')
